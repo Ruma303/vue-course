@@ -4,36 +4,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live coding: vue-start</title>
+  <title>Live Coding: vue-directives</title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">
-    <h1>Mustache Syntax</h1>
+    <!-- <img v-bind:src="imgPath"> -->
+    <!-- <img :src="imgPath"> -->
+    <!-- <a :href="url">Wikipedia</a> -->
 
-    <!-- Interpolazione variabili JavaScript -->
-    <h2>{{ message }}</h2>
+    <!-- <p>{{description }}</p>
+    <p v-html="description"></p>
+    <p>{{ htmlContent }}</p> -->
 
-    <!-- Calcoli ed espressioni -->
-    <p>{{ 5 + 1 }}</p>
+    <div>
+      <p v-cloak v-for="i in 33333">{{ i }}</p>
+    </div>
 
-    <!-- Usare e concatenare metodi JavaScript -->
-    <p>{{ message.toUpperCase().concat(' Hi!') }}</p>
+    <!-- <p>Oggi
+            <span v-if="weather === 'sunny'">è soleggiato.</span>
+            <span v-else-if="weather === 'cloudy'">è nuvoloso.</span>
+            <span v-else>è piovoso.</span>
+        </p> -->
 
-    <!-- Concatenare stringhe e variabili -->
-    <p>{{ message + ' Hi!' }}</p>
+    <!-- <p v-if=" 5 > 3 ">Ciao a tutti.</p> -->
 
-    <!-- Logica: NO costrutti if -->
-    <!-- <p>{{ if (true) 'true' else 'false' }}</p> -->
 
-    <!-- Logica: SI Operatori ternari -->
-    <p>{{ true ? 'true' : 'false' }}</p>
+    <!-- Il contenuto alternativo -->
+    <!-- <div v-if="loading">Sto caricando...</div> -->
+    <!-- Il contenuto vero e proprio -->
+    <!--  <div v-else>Vue ha terminato la compilazione.</div> -->
 
-    <!-- Logica: SI Short-circuit evaluation -->
-    <p>{{ 'true' || 'false' }}</p>
+    <!-- Oggi <span v-show="weather === 'sunny'">è soleggiato.</span> -->
 
-    <!-- NO creazione variabili -->
-    <!-- <p>{{ let a = 10 }}</p> -->
+    <!-- <ul>
+            <li v-for="person in array" :key="person.id">
+                Name: {{ person.name }},
+                age: {{ person.age }}
+            </li>
+        </ul> -->
+    <!-- <ul>
+            <li v-for="(person, index) in array" :key="person.id">
+                {{ index }}. Name: {{ person.name }}, age: {{ person.age }}
+            </li>
+        </ul> -->
+
+    <!-- <p v-text="weather">Meteo</p>
+
+        <ul>
+            <li v-for="person in array" :key="person.id"
+                v-text="`Name: ${person.name}, Age: ${person.age}`"/>
+        </ul> -->
+
+    <!-- <div>
+            <p>{{ compiled }}</p>
+            <div v-pre>
+                <p>{{ notCompiled }}</p>
+                <div v-if="true">Questo non verrà renderizzato</div>
+                <p v-for="i in 10">{{ i }}</p>
+            </div>
+        </div> -->
+
+    <!-- <div v-once>{{ message }}</div> -->
 
   </div>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
