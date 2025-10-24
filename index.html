@@ -22,9 +22,9 @@
     <p v-html="description"></p>
     <p>{{ htmlContent }}</p> -->
 
-    <div>
+    <!-- <div>
       <p v-cloak v-for="i in 33333">{{ i }}</p>
-    </div>
+    </div> -->
 
     <!-- <p>Oggi
             <span v-if="weather === 'sunny'">è soleggiato.</span>
@@ -43,13 +43,13 @@
     <!-- Oggi <span v-show="weather === 'sunny'">è soleggiato.</span> -->
 
     <!-- <ul>
-            <li v-for="person in array" :key="person.id">
+            <li v-for="person in users" :key="person.id">
                 Name: {{ person.name }},
                 age: {{ person.age }}
             </li>
         </ul> -->
     <!-- <ul>
-            <li v-for="(person, index) in array" :key="person.id">
+            <li v-for="(person, index) in users" :key="person.id">
                 {{ index }}. Name: {{ person.name }}, age: {{ person.age }}
             </li>
         </ul> -->
@@ -57,7 +57,7 @@
     <!-- <p v-text="weather">Meteo</p>
 
         <ul>
-            <li v-for="person in array" :key="person.id"
+            <li v-for="person in users" :key="person.id"
                 v-text="`Name: ${person.name}, Age: ${person.age}`"/>
         </ul> -->
 
@@ -71,6 +71,13 @@
         </div> -->
 
     <!-- <div v-once>{{ message }}</div> -->
+
+    <!-- Custom directives -->
+    <input v-focus v-log="'nuovo valore'" v-colore-sfondo type="text" placeholder="autofocus" />
+
+    <div v-colore-sfondo="'red'" v-hover-color="'white'">
+      Questo div avrà lo sfondo rosso
+    </div>
 
   </div>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
