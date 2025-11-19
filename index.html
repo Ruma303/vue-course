@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Vue Form</title>
+</head>
+
+<body>
+  <div id="app" class="flex flex-col content-center flex-wrap p-4 gap-4">
+    <h1 class="text-4xl font-semibold">Form Handling con Vue</h1>
+
+    <form @submit.prevent="submitForm" class="flex flex-col content-start gap-2">
+
+      <!-- Con uso standard di :value -->
+      <label>Your Name: </label>
+      <input type="text" class="bg-neutral-100 rounded px-2 py-1 border-2 border-black"
+        placeholder="Insert your name..."
+        :value="name"
+        @input="name=$event.target.value"
+        >
+        <!-- @input="updateName($event)" -->
+        <p v-if="name">{{ name }}</p>
+
+      <label for="">Your Message: </label>
+      <input type="text" class="bg-neutral-100 rounded px-2 py-1 border-2 border-black" v-model.trim="msg">
+      <p v-if="msg">{{ msg }}</p>
+
+      <label for="">Your Age: </label>
+      <input type="number" class="bg-neutral-100 rounded px-2 py-1 border-2 border-black" v-model.number="age">
+      <button type="button" @click="increment">Increment</button>
+      <button type="button" @click="age--">Decrement</button>
+
+      <button type="submit" class="bg-sky-500 rounded w-fit px-2 py-1">Submit</button>
+
+      <!-- <label for="options">Choose an nation:</label>
+      <select id="options" class="bg-neutral-100 rounded px-2 py-1 border-2 border-black" v-model="selectedOption"
+        multiple>
+        <option value="US">United States of America</option>
+        <option value="IT">Italy</option>
+        <option value="FR">France</option>
+      </select>
+      <p v-if="selectedOption">You selected: {{ selectedOption.join(', ') }}</p>
+
+
+      <label>Traffic light</label>
+      <label><input type="radio" class="bg-neutral-100 rounded-full border-2 border-black" name="trafficLight"
+          v-model="trafficLight" value="red"> Red</label>
+      <label><input type="radio" class="bg-neutral-100 rounded-full border-2 border-black" name="trafficLight"
+          v-model="trafficLight" value="yellow"> Yellow</label>
+      <label><input type="radio" class="bg-neutral-100 rounded-full border-2 border-black" name="trafficLight"
+          v-model="trafficLight" value="green"> Green</label>
+      <p v-if="trafficLight">{{ trafficLight }} light is on</p>
+
+      <label>Checkbox</label>
+      <label><input type="checkbox" class="bg-neutral-100 rounded-full border-2 border-black" v-model="subscribe" checked>Do you want to subscribe to our newsletter?</label>
+      <p v-if="subscribe">You are subscribed!</p>
+
+
+    <label>Shopping list</label>
+    <label><input v-model="cart" type="checkbox" value="Bread"> Bread</label>
+    <label><input v-model="cart" type="checkbox" value="Milk"> Milk</label>
+    <label><input v-model="cart" type="checkbox" value="Eggs"> Eggs</label>
+
+    <div v-if="cart.length">
+      <p>My bag: <span>{{cart.join(", ")}}</span></p>
+    </div> -->
+
+    </form>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
