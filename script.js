@@ -3,7 +3,8 @@ const app = Vue.createApp({
     return {
       name: '',
       firstName: '',
-      lastName: ''
+      lastName: '',
+      age: null
     }
   },
   methods: {
@@ -22,6 +23,13 @@ const app = Vue.createApp({
   computed: {
     fullName() {
       return [this.firstName, this.lastName].filter(Boolean).join(' ');
+    }
+  },
+  watch: {
+    age(newVal, oldVal) {
+      setTimeout(() => {
+        this.age = 20
+      }, 3000)
     }
   }
 }).mount('#app');

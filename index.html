@@ -17,11 +17,15 @@
       <input type="text" class="bg-neutral-100 rounded px-2 py-1 border-2 border-black" placeholder="Insert your name..." v-model="name">
       <p v-if="name">{{ name }}</p>
 
+      <label>Your Age: </label>
+      <input type="number" v-model.number="age" class="bg-neutral-100 rounded px-2 py-1 border-2 border-black">
+      <button type="button" @click="age++" class="bg-sky-400 rounded px-2 py-1 border-1 border-stone-300 w-fit">Increment</button>
+      <button type="button" @click="age--" class="bg-sky-400 rounded px-2 py-1 border-1 border-stone-300 w-fit">Decrement</button>
+      <p v-if="age">{{ age }}</p>
+
       <button type="submit" class="bg-sky-500 rounded w-fit px-2 py-1">Submit</button>
     </form>
     <p v-if="fullName">Your fullname is: {{ fullName }}</p>
-    <p v-if="firstName">Your first name is: {{ firstName }}</p>
-    <p v-if="lastName">Your last name is: {{ lastName }}</p>
   </div>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="script.js"></script>
