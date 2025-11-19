@@ -1,29 +1,27 @@
 const app = Vue.createApp({
-    data() {
-        return {
-            msg: 'Form input binding',
-            name: null,
-            age: null,
-            selectedOption: null,
-            trafficLight: null,
-            subscribe: null,
-            cart: [],
-        }
-    },
-    methods: {
-        updateName(newChar) {
-            console.log(newChar);
-            this.name = newChar.target.value;
-        },
-        increment() {
-          this.age++
-        },
-        submitForm(form) {
-          this.msg = form.value.msg
-          this.age = form.value.age
-          this.msg = form.value.msg
-          this.msg = form.value.msg
-        }
-    },
+  data() {
+    return {
+      name: '',
+      firstName: '',
+      lastName: ''
+    }
+  },
+  methods: {
+    submitForm() {
+      if (!this.name) {
+        this.firstName = '';
+        this.lastName = '';
+        return;
+      }
+      // Suddivide il nome sugli spazi
+      const names = this.name.trim().split(/\s+/);
+      this.firstName = names[0] || '';
+      this.lastName = names.length > 1 ? names.slice(1).join(' ') : '';
+    }
+  },
+  computed: {
+    fullName() {
+      return [this.firstName, this.lastName].filter(Boolean).join(' ');
+    }
+  }
 }).mount('#app');
-
