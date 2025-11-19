@@ -4,81 +4,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Coding: vue-directives</title>
-  <style>
-    [v-cloak] {
-      display: none;
-    }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Vue Form</title>
 </head>
 
 <body>
-  <div id="app">
-    <!-- <img v-bind:src="imgPath"> -->
-    <!-- <img :src="imgPath"> -->
-    <!-- <a :href="url">Wikipedia</a> -->
+  <div id="app" class="flex flex-col content-center flex-wrap p-4 gap-4">
+    <h1 class="text-4xl font-semibold">Form Handling con Vue</h1>
 
-    <!-- <p>{{description }}</p>
-    <p v-html="description"></p>
-    <p>{{ htmlContent }}</p> -->
+    <form @submit.prevent="submitForm" class="flex flex-col content-start gap-2">
 
-    <!-- <div>
-      <p v-cloak v-for="i in 33333">{{ i }}</p>
+      <!-- Con uso standard di :value -->
+      <label>Your Name: </label>
+      <input type="text" class="bg-neutral-100 rounded px-2 py-1 border-2 border-black"
+        placeholder="Insert your name..."
+        :value="name"
+        @input="name=$event.target.value"
+        >
+        <!-- @input="updateName($event)" -->
+        <p v-if="name">{{ name }}</p>
+
+      <label for="">Your Message: </label>
+      <input type="text" class="bg-neutral-100 rounded px-2 py-1 border-2 border-black" v-model.trim="msg">
+      <p v-if="msg">{{ msg }}</p>
+
+      <label for="">Your Age: </label>
+      <input type="number" class="bg-neutral-100 rounded px-2 py-1 border-2 border-black" v-model.number="age">
+      <button type="button" @click="increment">Increment</button>
+      <button type="button" @click="age--">Decrement</button>
+
+      <button type="submit" class="bg-sky-500 rounded w-fit px-2 py-1">Submit</button>
+
+      <!-- <label for="options">Choose an nation:</label>
+      <select id="options" class="bg-neutral-100 rounded px-2 py-1 border-2 border-black" v-model="selectedOption"
+        multiple>
+        <option value="US">United States of America</option>
+        <option value="IT">Italy</option>
+        <option value="FR">France</option>
+      </select>
+      <p v-if="selectedOption">You selected: {{ selectedOption.join(', ') }}</p>
+
+
+      <label>Traffic light</label>
+      <label><input type="radio" class="bg-neutral-100 rounded-full border-2 border-black" name="trafficLight"
+          v-model="trafficLight" value="red"> Red</label>
+      <label><input type="radio" class="bg-neutral-100 rounded-full border-2 border-black" name="trafficLight"
+          v-model="trafficLight" value="yellow"> Yellow</label>
+      <label><input type="radio" class="bg-neutral-100 rounded-full border-2 border-black" name="trafficLight"
+          v-model="trafficLight" value="green"> Green</label>
+      <p v-if="trafficLight">{{ trafficLight }} light is on</p>
+
+      <label>Checkbox</label>
+      <label><input type="checkbox" class="bg-neutral-100 rounded-full border-2 border-black" v-model="subscribe" checked>Do you want to subscribe to our newsletter?</label>
+      <p v-if="subscribe">You are subscribed!</p>
+
+
+    <label>Shopping list</label>
+    <label><input v-model="cart" type="checkbox" value="Bread"> Bread</label>
+    <label><input v-model="cart" type="checkbox" value="Milk"> Milk</label>
+    <label><input v-model="cart" type="checkbox" value="Eggs"> Eggs</label>
+
+    <div v-if="cart.length">
+      <p>My bag: <span>{{cart.join(", ")}}</span></p>
     </div> -->
 
-    <!-- <p>Oggi
-            <span v-if="weather === 'sunny'">è soleggiato.</span>
-            <span v-else-if="weather === 'cloudy'">è nuvoloso.</span>
-            <span v-else>è piovoso.</span>
-        </p> -->
-
-    <!-- <p v-if=" 5 > 3 ">Ciao a tutti.</p> -->
-
-
-    <!-- Il contenuto alternativo -->
-    <!-- <div v-if="loading">Sto caricando...</div> -->
-    <!-- Il contenuto vero e proprio -->
-    <!--  <div v-else>Vue ha terminato la compilazione.</div> -->
-
-    <!-- Oggi <span v-show="weather === 'sunny'">è soleggiato.</span> -->
-
-    <!-- <ul>
-            <li v-for="person in users" :key="person.id">
-                Name: {{ person.name }},
-                age: {{ person.age }}
-            </li>
-        </ul> -->
-    <!-- <ul>
-            <li v-for="(person, index) in users" :key="person.id">
-                {{ index }}. Name: {{ person.name }}, age: {{ person.age }}
-            </li>
-        </ul> -->
-
-    <!-- <p v-text="weather">Meteo</p>
-
-        <ul>
-            <li v-for="person in users" :key="person.id"
-                v-text="`Name: ${person.name}, Age: ${person.age}`"/>
-        </ul> -->
-
-    <!-- <div>
-            <p>{{ compiled }}</p>
-            <div v-pre>
-                <p>{{ notCompiled }}</p>
-                <div v-if="true">Questo non verrà renderizzato</div>
-                <p v-for="i in 10">{{ i }}</p>
-            </div>
-        </div> -->
-
-    <!-- <div v-once>{{ message }}</div> -->
-
-    <!-- Custom directives -->
-    <input v-focus v-log="'nuovo valore'" v-colore-sfondo type="text" placeholder="autofocus" />
-
-    <div v-colore-sfondo="'red'" v-hover-color="'white'">
-      Questo div avrà lo sfondo rosso
-    </div>
-
+    </form>
   </div>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="script.js"></script>
